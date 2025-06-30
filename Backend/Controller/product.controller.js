@@ -1,6 +1,6 @@
-const { Product } = require('../Model/Product')
 const jwt = require('jsonwebtoken')
-const { User } = require('../Model/User')
+const { User } = require('../model/User')
+const { Product } = require('../model/Product')
 
 const ShowProduct = async (req, res) => {
     try {

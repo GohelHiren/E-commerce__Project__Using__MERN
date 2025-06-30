@@ -1,6 +1,6 @@
-const { User } = require('../Model/User')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+const { User } = require('../model/User')
 
 const signUp = async (req, res) => {
     try {
@@ -29,7 +29,7 @@ const signUp = async (req, res) => {
             token,
             role: 'user'
         })
-        res.status(200).json({ message: "User created Successfully!!" })
+        res.status(200).json({ message: `${ User.username} Your Signup Successfully!!` })
 
     } catch (err) {
         console.log(err);
@@ -48,18 +48,18 @@ const logIn = async (req, res) => {
 
         let user = await User.findOne({ email })
         if (!user) {
-            res.status(400).json({ message: "User not Register!!" })
+            res.status(400).json({ message: "User not Register!! :(" })
         }
 
         // compare password
 
         let isPasswordMatched = bcrypt.compareSync(password, user.password)
         if (!isPasswordMatched) {
-            res.status(400).json({ message: "password wrong!!" })
+            res.status(400).json({ message: "password wrong!! :(" })
         }
 
         res.status(200).json({
-            message: "user login successfully!!",
+            message: `You are Login successfully ${ user.email} :)`,
             id: user._id,
             username: user.Username,
             token: user.token,
