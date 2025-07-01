@@ -230,7 +230,7 @@ const payment = async (req, res) => {
             user.cart.products.map((item, index) =>
             (
                 {
-                    index: index + 1,
+                   
                     name: item.product.name,
                     price: item.product.price
                 }))

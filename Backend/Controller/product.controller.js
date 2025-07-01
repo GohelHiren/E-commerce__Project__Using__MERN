@@ -85,7 +85,7 @@ const findProduct = async (req, res) => {
 const updateProduct = async (req, res) => {
     try {
         let { id } = req.params
-        const { name, price, img, desc, brand, stock } = req.body
+        const { name, price, image, description, brand, stock } = req.body
         if (!id) {
             return res.status(400).json({ message: "Id not found...!" })
         }
@@ -99,8 +99,10 @@ const updateProduct = async (req, res) => {
         if (!product) {
             return res.status(404).json({ message: "Product not found...!" })
         }
-        let updateProObj = { name, price, img, desc, brand, stock }
+        let updateProObj = { name, price, image, description, brand, stock }
+
         let updatePro = await Product.findByIdAndUpdate({ _id: id }, { $set: updateProObj })
+
         return res.status(200).json({
             message: "Product Updated Successfully...",
             product: updatePro

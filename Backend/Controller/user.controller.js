@@ -12,7 +12,7 @@ const signUp = async (req, res) => {
         const isUserAlreadyExist = await User.findOne({ email })
 
         if (isUserAlreadyExist) {
-            return res.status(400).json({ message: "User already exist..." })
+            return res.status(400).json({ message: `${username} already exist...` })
         }
 
         // hash the password 
@@ -29,7 +29,7 @@ const signUp = async (req, res) => {
             token,
             role: 'user'
         })
-        res.status(200).json({ message: `${ User.username} Your Signup Successfully!!` })
+        res.status(200).json({ message: `${username} Your Signup Successfully!!` })
 
     } catch (err) {
         console.log(err);

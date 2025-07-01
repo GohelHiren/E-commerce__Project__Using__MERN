@@ -10,7 +10,7 @@ const sendEmail = async (userEmail, productArray) => {
         }
     })
     const productDetail = productArray.map((product, index) => {
-        `${index + 1}.Name : ${product.name}.Price: ${product.price}`
+      return  `${index + 1}.Name : ${product.name}.Price: ${product.price}`
     })
 
     const mailOptions = {
